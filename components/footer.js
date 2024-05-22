@@ -8,8 +8,7 @@ export default function Footer(props) {
   return (
     <Container className="mt-10 border-t border-gray-100 dark:border-gray-800">
       <div className="text-center text-sm">
-        Copyright © {new Date().getFullYear()} {props?.copyright}. All
-        rights reserved.
+        Copyright © {new Date().getFullYear()} {props?.copyright}. Derechos reservados
       </div>
       <div className="mt-1 flex justify-center gap-1 text-center text-sm text-gray-500 dark:text-gray-600">
         <span>
@@ -20,10 +19,10 @@ export default function Footer(props) {
            // It helps us to grow & continue our work. Thank you.
           // OR Purchase PRO version for commercial license.  */}
           <a
-            href="https://web3templates.com/?ref=stablo-template"
+            href="https://portafolio-27f99.web.app/"
             rel="noopener"
             target="_blank">
-            Web3Templates
+            Rodrigo Sancho
           </a>
         </span>
         <span>&middot;</span>
