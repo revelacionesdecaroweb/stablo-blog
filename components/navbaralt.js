@@ -92,7 +92,10 @@ export default function NavbarAlt(props) {
                       />
                     ) : (
                       <span className="block text-center">
-                        Stablo
+                        <div className="relative h-18 w-18  flex-shrink-0">
+                        <img className="rounded-full object-cover" src="https://firebasestorage.googleapis.com/v0/b/blog-ca662.appspot.com/o/perfil.jpg?alt=media&token=42a2a5d7-f5b6-4b9b-b511-8b04b699354d"></img>
+                        </div>
+
                       </span>
                     )}
                   </Link>
@@ -106,7 +109,10 @@ export default function NavbarAlt(props) {
                       />
                     ) : (
                       <span className="block text-center">
-                        Stablo
+                        <div className="relative h-18 w-18  flex-shrink-0">
+                       
+                        </div>
+                       
                       </span>
                     )}
                   </Link>

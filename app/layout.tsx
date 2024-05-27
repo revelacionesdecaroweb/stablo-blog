@@ -2,7 +2,7 @@ import "@/styles/tailwind.css";
 import { Providers } from "./providers";
 import { cx } from "@/utils/all";
 import { Inter, Lora } from "next/font/google";
-
+import "./globals.css";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter"
