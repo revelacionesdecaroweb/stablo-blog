@@ -31,10 +31,10 @@ async function sharedMetaData(params) {
         }
       ]
     },
-    twitter: {
+  /*   twitter: {
       title: settings?.title || "Stablo Template",
       card: "summary_large_image"
-    },
+    }, */
     robots: {
       index: true,
       follow: true
