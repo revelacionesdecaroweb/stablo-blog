@@ -25,6 +25,7 @@ export default function Footer(props) {
             Rodrigo Sancho
           </a>
         </span>
+       
         <span>&middot;</span>
         <span>
           {" "}
@@ -34,9 +35,18 @@ export default function Footer(props) {
             target="_blank">
            
           </a>
+         
         </span>
       </div>
-    
+      <div className="mt-2 flex items-center justify-between">
+        <div className="mt-5">
+         
+        </div>
+        <ThemeSwitch />
+      </div>
+      <Backlink />
+
+      <Backlink></Backlink>
     </Container>
   );
 }

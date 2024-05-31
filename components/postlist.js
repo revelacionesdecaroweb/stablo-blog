@@ -6,6 +6,7 @@ import { parseISO, format } from "date-fns";
 import { PhotoIcon } from "@heroicons/react/24/outline";
 import CategoryLabel from "@/components/blog/category";
 
+import { getArticleById } from "@/lib/firebase/articles.services";
 export default function PostList({
   post,
   aspect,
@@ -21,6 +22,7 @@ export default function PostList({
   const AuthorimageProps = post?.author?.image
     ? urlForImage(post.author.image)
     : null;
+  const article = getArticleById(articleId);  
   return (
     <>
       <div
@@ -46,7 +48,7 @@ export default function PostList({
             }`}>
             {imageProps ? (
               <Image
-                src={imageProps.src}
+                src={article.img}
                 {...(post.mainImage.blurDataURL && {
                   placeholder: "blur",
                   blurDataURL: post.mainImage.blurDataURL
