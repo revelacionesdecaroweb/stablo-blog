@@ -75,7 +75,7 @@ export default function About({ authors, settings }) {
           </div>
           <div className="w-1/4 threads">
             <a href="https://www.threads.net/@revelacionesdecaro?fbclid=IwAR0yYmIEYEDLo-GmoiS-ha4Gd_VVGCkzAvY4tBWjN5vwiZnNtBqGOzFIIs8"
-              target="_blank">
+              target="_blank" rel="noreferrer">
               <img src="https://firebasestorage.googleapis.com/v0/b/blog-ca662.appspot.com/o/iconos%2Fthreads.png?alt=media&token=449b7a0d-c9bd-44fb-97f3-a928fc006257" loading="lazy" alt="threads" />
             </a>
         </div>
