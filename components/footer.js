@@ -21,7 +21,9 @@ export default function Footer(props) {
           <a
             href="https://portafolio-27f99.web.app/"
             rel="noopener"
-            target="_blank">
+            target="_blank"
+            rel="noreferrer"
+            >
             Rodrigo Sancho
           </a>
         </span>
