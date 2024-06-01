@@ -11,7 +11,8 @@ import {
 export default function Pagination({
   pageIndex,
   isFirstPage,
-  isLastPage
+  isLastPage,
+  onPageChange 
 }) {
   const router = useRouter();
 
@@ -25,6 +26,7 @@ export default function Pagination({
     const query = params.toString();
 
     router.push(`/archive?${query}`);
+    onPageChange(pageIndex + 1); 
   };
 
   const handlePrevPage = () => {
@@ -32,7 +34,9 @@ export default function Pagination({
     const query = params.toString();
 
     router.push(`/archive?${query}`);
+    onPageChange(pageIndex - 1);
   };
+
 
   return (
     <div className="mt-10 flex items-center justify-center">
