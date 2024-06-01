@@ -48,28 +48,28 @@ export default function About({ authors, settings }) {
       </div>
       <div className="flex p-2">
           <div className="w-1/4 youtube">
-            <a href="https://www.youtube.com/@revelacionesdecaro" target="_blank">
+            <a href="https://www.youtube.com/@revelacionesdecaro" target="_blank" rel="noreferrer">
               <img src="https://firebasestorage.googleapis.com/v0/b/blog-ca662.appspot.com/o/iconos%2Fyoutube_4494485.png?alt=media&token=c712a602-66c4-47fa-8a20-7a616a6a1b99" loading="lazy" alt="youtube" />
             </a>
           </div>
           <div className="w-1/4 facebook">
-            <a href="https://www.facebook.com/groups/717152485846700" target="_blank">
+            <a href="https://www.facebook.com/groups/717152485846700" target="_blank"  rel="noreferrer">
               <img src="https://firebasestorage.googleapis.com/v0/b/blog-ca662.appspot.com/o/iconos%2Ffacebook-logo_2504792.png?alt=media&token=cb0ce98c-7148-44e0-824e-966f8de84ae2" loading="lazy" alt="facebook" />
             </a>
           </div>
           <div className="w-1/4 instagram">
-            <a href="https://www.instagram.com/revelacionesdecaro/" target="_blank">
+            <a href="https://www.instagram.com/revelacionesdecaro/" target="blank"  rel="noreferrer">
               <img src="https://firebasestorage.googleapis.com/v0/b/blog-ca662.appspot.com/o/iconos%2Finstagram_4494489.png?alt=media&token=39323f0a-f0a6-4892-9960-020a7633c25f" loading="lazy" alt="instagram" />
             </a>
           </div>
           <div className="w-1/4 twitter">
-            <a href="https://twitter.com/carorevela/" target="_blank">
+            <a href="https://twitter.com/carorevela/" target="blank"  rel="noreferrer">
               <img src="https://firebasestorage.googleapis.com/v0/b/blog-ca662.appspot.com/o/iconos%2Ftwitter_5969020.png?alt=media&token=51501e23-e068-4bea-9f0c-48874c731fb3" loading="lazy" alt="twitter" />
             </a>
           </div>
           <div className="w-1/4 ticktock">
             <a href="https://www.tiktok.com/@revelacionesdecaro?_t=8hxlOKxZgJh&_r=1&fbclid=IwAR3e4EUYxdtr4LhZsBS-cSt8YqSQRFpLCVti8HxtZsnQJc3svrv8MbjpwMM"
-              target="_blank">
+              target="_blank"  rel="noreferrer">
               <img src="https://firebasestorage.googleapis.com/v0/b/blog-ca662.appspot.com/o/iconos%2Ftik-tok_4782345.png?alt=media&token=ae5b81c8-715e-4079-9af5-cc8902ab89ea" loading="lazy" alt="tik-tok" />
             </a>
           </div>

@@ -30,7 +30,7 @@ export default function Post() {
             src={article.img}
             width={300}
             height={300}
-    
+            alt={article.titulo}
           ></Image>
             {/*Este es un comenetario*/}
           {/* Agrega más campos según la estructura de tus artículos */}
