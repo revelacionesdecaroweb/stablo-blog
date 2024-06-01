@@ -17,10 +17,11 @@ const nextConfig = {
   }
 };
 
-module.exports = nextConfig;
+
 
 module.exports = {
   images: {
     domains: ['firebasestorage.googleapis.com'], // Add your domain(s) here
   },
+  nextConfig
 };
