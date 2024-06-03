@@ -33,7 +33,7 @@ export default function Post() {
     {articless.map((article) => (
       <Link href={`/author`}>
         <div key={article.id} className='flex flex-col overflow-hidden rounded-md bg-gray-100 transition-all hover:scale-105 dark:bg-gray-800'>
-          <h2>hola</h2>
+          <h2>article.titulo</h2>
           <div className='flex-grow'>
             <Image src={article.img}
 
