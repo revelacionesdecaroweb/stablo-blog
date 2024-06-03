@@ -22,19 +22,15 @@ export default function Pagination({
   // Define functions for navigating to the next and previous pages
   // These functions update the page query parameter in the URL
   const handleNextPage = () => {
-    params.set("page", (pageIndex + 1).toString());
-    const query = params.toString();
-
-    router.push(`/archive?${query}`);
-    onPageChange(pageIndex + 1); 
+    const nextPage = pageIndex + 1;
+    router.push(`/archive?page=${nextPage}`);
+    onPageChange(nextPage);
   };
 
   const handlePrevPage = () => {
-    params.set("page", (pageIndex - 1).toString());
-    const query = params.toString();
-
-    router.push(`/archive?${query}`);
-    onPageChange(pageIndex - 1);
+    const prevPage = pageIndex - 1;
+    router.push(`/archive?page=${prevPage}`);
+    onPageChange(prevPage);
   };
 
 

@@ -4,6 +4,8 @@ import { getAllArticles } from '@/lib/firebase/articles.services';
 import Image from 'next/image';
 import Pagination from '@/components/blog/pagination';
 import { useSearchParams } from 'next/navigation'; // Importa useSearchParams
+import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
+import Link from 'next/link';
 
 export default function Post() {
   const [articles, setArticles] = useState([]);
@@ -43,20 +45,37 @@ export default function Post() {
   };
 
   return (
-    <div className='mt-10 grid gap-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-3'>
+  
+    <div className='mt-10 flex flex-col items-center'>
+        
+           <div className='grid gap-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-3 mb-auto w-full'>
       {currentArticles.map((article) => (
-        <div key={article.id} className='overflow-hidden rounded-md bg-gray-100 transition-all hover:scale-105 dark:bg-gray-800'>
+         <Link href={`/author`}>
+        <div key={article.id}className='flex flex-col overflow-hidden rounded-md bg-gray-100 transition-all hover:scale-105 dark:bg-gray-800'>
           <h2>{article.titulo}</h2>
-          <Image src={article.img} width={300} height={300} alt={article.titulo}></Image>
+          <div className='flex-grow'>
+              <Image src={article.img} 
+               layout='responsive'
+              width={200} height={100} 
+              objectFit='cover'
+              alt={article.titulo} />
+            </div>
         </div>
+         </Link>  
       ))}
-      <Pagination
-        pageIndex={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-        isFirstPage={isFirstPage}
-        isLastPage={isLastPage}
-      />
+  
+          </div>
+   
+    <div className='flex justify-center mt-10'>
+        <Pagination
+          pageIndex={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+          isFirstPage={isFirstPage}
+          isLastPage={isLastPage}
+        />
+      </div>
     </div>
   );
 }
+
