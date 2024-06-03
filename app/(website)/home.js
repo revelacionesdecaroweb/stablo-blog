@@ -31,7 +31,7 @@ export default function Post() {
   <div className='grid gap-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-3 mb-auto w-full'>
 
     {articless.map((article) => (
-      <Link href={`/author`} key={article.id}>
+      <Link key={article.id} href={`/author`} >
         <div  className='flex flex-col overflow-hidden rounded-md bg-gray-100 transition-all hover:scale-105 dark:bg-gray-800'>
           <h2>article.titulo</h2>
           <div className='flex-grow'>
