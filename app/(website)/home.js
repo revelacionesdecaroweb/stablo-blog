@@ -88,52 +88,9 @@ export default function Post() {
               </Link>
             </h2>
 
-            {/*   <div className="hidden">
-                {post.excerpt && (
-                  <p className="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-gray-400">
-                    <Link
-                      href={`/post/${
-                        pathPrefix ? `${pathPrefix}/` : ""
-                      }${post.slug.current}`}>
-                      {post.excerpt}
-                    </Link>
-                  </p>
-                )}
-              </div> */}
+        
 
-            {/*     <div className="mt-3 flex items-center space-x-3 text-gray-500 dark:text-gray-400">
-                <Link href={`/author/${post?.author?.slug?.current}`}>
-                  <div className="flex items-center gap-3">
-                    <div className="relative h-5 w-5 flex-shrink-0">
-                      {post?.author?.image && (
-                        <Image
-                          src={AuthorimageProps.src}
-                          alt={post?.author?.name}
-                          className="rounded-full object-cover"
-                          fill
-                          sizes="20px"
-                        />
-                      )}
-                    </div>
-                    <span className="truncate text-sm">
-                      {post?.author?.name}
-                    </span>
-                  </div>
-                </Link>
-                <span className="text-xs text-gray-300 dark:text-gray-600">
-                  &bull;
-                </span>
-                <time
-                  className="truncate text-sm"
-                  dateTime={post?.publishedAt || post._createdAt}>
-                  {format(
-                    parseISO(post?.publishedAt || post._createdAt),
-                    "MMMM dd, yyyy"
-                  )}
-                </time>
-              </div>
-            </div>
-          </div> */}
+         
           </div>
         ))}
 
