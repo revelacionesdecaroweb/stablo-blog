@@ -21,7 +21,7 @@ export default async function ArchivePage({ searchParams }) {
         </div>
        
         
-          <Archive searchParams={searchParams} />
+          <Archive/>
        
       </Container>
     </>
