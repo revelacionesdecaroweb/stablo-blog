@@ -4,8 +4,7 @@ import { getAllArticles } from '@/lib/firebase/articles.services';
 import { cx } from "@/utils/all";
 import Image from 'next/image';
 import Pagination from '@/components/blog/pagination';
-import { useSearchParams } from 'next/navigation'; // Importa useSearchParams
-import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
+
 import Link from 'next/link';
 
 export default function Post() {
@@ -45,15 +44,13 @@ export default function Post() {
     setSearchParams({ page: newPage.toString() });
   };
 
-  const fontSize = "large";
-  const  fontWeight = "normal"
+/*   const fontSize = "large";
+  const  fontWeight = "normal" */
   return (
 
 
     <>
       <div className='mt-10 grid gap-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-3'>
-
-
         {currentArticles.map((article) => (
           <div
             key={article.id}
@@ -73,9 +70,7 @@ export default function Post() {
 
                 <Image
                   src={article.img}
-
                   alt={article.titulo || "Thumbnail"}
-
                   className="object-cover transition-all"
                   fill
                   sizes="(max-width: 768px) 30vw, 33vw"
@@ -87,13 +82,6 @@ export default function Post() {
 
             <h2
                className={cx(
-                fontSize === "large" ? "text-2xl" 
-                  : minimal
-                  ? "text-3xl"
-                  : "text-lg",
-                fontWeight === "normal"
-                  ? "line-clamp-2 font-medium  tracking-normal text-black"
-                  : "font-semibold leading-snug tracking-tight",
                 "mt-2    dark:text-white"
               )}>
               <Link href={`/`}>
