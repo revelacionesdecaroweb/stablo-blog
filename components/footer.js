@@ -46,9 +46,9 @@ export default function Footer(props) {
         </div>
         <ThemeSwitch />
       </div>
-      <Backlink />
+     {/*  <Backlink /> */}
 
-      <Backlink></Backlink>
+    
     </Container>
   );
 }
@@ -79,7 +79,7 @@ const Backlink = () => {
         />
       </svg>
 
-      <span> Purchase Pro ↗</span>
+    {/*   <span> Purchase Pro ↗</span> */}
     </a>
   );
 };

@@ -24,13 +24,13 @@ export default function Pagination({
   const handleNextPage = () => {
     const nextPage = pageIndex + 1;
     router.push(`/archive?page=${nextPage}`);
-    onPageChange(nextPage);
+   
   };
 
   const handlePrevPage = () => {
     const prevPage = pageIndex - 1;
     router.push(`/archive?page=${prevPage}`);
-    onPageChange(prevPage);
+    
   };
 
 

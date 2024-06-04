@@ -3,57 +3,48 @@ import { useState, useEffect } from 'react';
 import { getAllArticles } from '@/lib/firebase/articles.services';
 import { cx } from "@/utils/all";
 import Image from 'next/image';
-import Pagination from '@/components/blog/pagination';
-
+import Pagination from "@/components/blog/pagination";
+ // Importa useSearchParams
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
-export default function Post() {
+export default  function Post({ searchParams }) {
   const [articles, setArticles] = useState([]);
-  const searchParams = useSearchParams(); 
-  const currentPage = parseInt(searchParams.get('page'), 6) || 1
-  const POSTS_PER_PAGE = 6;
-
-  // Convierte el parámetro de página a un número y actualiza el estado
-
+  const router = useRouter(); 
+  const POSTS_PER_PAGE= 6
+  const pageIndex = parseInt(searchParams?.page, 6) || 1;
+  const startIndex = (pageIndex - 1) * POSTS_PER_PAGE;
+  const endIndex = pageIndex * POSTS_PER_PAGE;
+  const isFirstPage = pageIndex === 1;
+  const isLastPage = endIndex >= articles.length;
+  const currentArticles = articles.slice(startIndex, endIndex);
 
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const fetchedArticles = await getAllArticles();
+        const startIndex = (pageIndex - 1) * POSTS_PER_PAGE;
+        const fetchedArticles = await getAllArticles(startIndex);
         setArticles(fetchedArticles);
       } catch (error) {
-        console.error('Error al obtener los artículos:', error);
+        setArticles([])
       }
     };
     fetchArticles();
-  }, []); // Elimina la dependencia router.isReady
+  }, [pageIndex]); 
+ const handlePageChange = (newPage) => {
+   router.push(`/?page=${newPage}`);
+   alert('hola')
+  console.log(`Cambiando a la página ${newPage}`);
+ 
+};
 
-  // Calcula el número total de páginas
-  const totalPages = Math.ceil(articles.length / POSTS_PER_PAGE);
-  const isFirstPage = currentPage === 1;
-  const isLastPage = currentPage === totalPages;
-
-  // Obtiene los artículos para la página actual
-  const currentArticles = articles.slice(
-    (currentPage - 1) * POSTS_PER_PAGE,
-    currentPage * POSTS_PER_PAGE
-  );
-
-  // Función para cambiar la página
-  const handlePageChange = (newPage) => {
-    setSearchParams({ page: newPage.toString() });
-  };
-
-/*   const fontSize = "large";
-  const  fontWeight = "normal" */
   return (
-
 
     <>
       <div className='mt-10 grid gap-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-3'>
         {currentArticles.map((article) => (
           <div
-            key={article.id}
+          key={article.titulo}
             className={cx(
               "group cursor-pointer",
             )}>
@@ -104,18 +95,13 @@ export default function Post() {
 
       </div>
 
+      <Pagination
+        pageIndex={pageIndex}
+        isFirstPage={isFirstPage}
+        isLastPage={isLastPage}
+        onPageChange={handlePageChange}
+      />
   
-
-      <div className='flex justify-center mt-10'>
-        <Pagination
-          pageIndex={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-          isFirstPage={isFirstPage}
-          isLastPage={isLastPage}
-        />
-      </div>
-
     </>
   );
 }
