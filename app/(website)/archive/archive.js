@@ -9,7 +9,7 @@ import Link from 'next/link';
 
 export default function Post() {
   const [articles, setArticles] = useState([]);
-/*   const searchParams = useSearchParams(); */
+  const searchParams = useSearchParams(); 
   const currentPage = parseInt(searchParams.get('page'), 6) || 1
   const POSTS_PER_PAGE = 6;
 
