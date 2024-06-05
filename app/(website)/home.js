@@ -29,7 +29,7 @@ export default function Post() {
       <Container>
 
         <>
-          <div className='mt-10 grid gap-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-3'>
+          <div className='mt-10 grid gap-10 md:grid-cols-2 lg:gap-10 lg-gap-10'>
 
 
             {articless.map((article) => (
@@ -69,7 +69,7 @@ export default function Post() {
                       : minimal
                         ? "text-3xl"
                         : "text-lg",
-                    fontWeight === "normal"
+                    fontWeight === "semibold leading-snug"
                       ? "line-clamp-2 font-medium  tracking-normal text-black"
                       : "font-semibold leading-snug tracking-tight",
                     "mt-2    dark:text-white"

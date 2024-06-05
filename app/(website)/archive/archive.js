@@ -6,24 +6,25 @@ import Image from 'next/image';
 import Pagination from "@/components/blog/pagination";
  // Importa useSearchParams
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+ import { useRouter, useSearchParams } from 'next/navigation'; 
 
-export default  function Post({ searchParams }) {
+export default  function Post() {
   const [articles, setArticles] = useState([]);
   const router = useRouter(); 
+  const searchParams = useSearchParams(); 
   const POSTS_PER_PAGE= 6
-  const pageIndex = parseInt(searchParams?.page, 6) || 1;
+  const pageIndex = parseInt(searchParams.get('page'), 10) || 1;
   const startIndex = (pageIndex - 1) * POSTS_PER_PAGE;
   const endIndex = pageIndex * POSTS_PER_PAGE;
   const isFirstPage = pageIndex === 1;
-  const isLastPage = endIndex >= articles.length;
+  const isLastPage = (pageIndex * POSTS_PER_PAGE) >= articles.length;
   const currentArticles = articles.slice(startIndex, endIndex);
 
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const startIndex = (pageIndex - 1) * POSTS_PER_PAGE;
-        const fetchedArticles = await getAllArticles(startIndex);
+        const fetchedArticles = await getAllArticles();
+        setArticles(fetchedArticles);
         setArticles(fetchedArticles);
       } catch (error) {
         setArticles([])
@@ -99,7 +100,7 @@ export default  function Post({ searchParams }) {
         pageIndex={pageIndex}
         isFirstPage={isFirstPage}
         isLastPage={isLastPage}
-        onPageChange={handlePageChange}
+        onPageChange={(newPage) => router.push(`/?page=${newPage}`)}
       />
   
     </>
