@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/container";
-import { notFound } from "next/navigation";
+// Importa 'useRouter' desde 'next/router' para manejar la redirección en caso de no encontrar el post
+import { useRouter } from "next/router";
 import { PortableText } from "@/lib/sanity/plugins/portabletext";
 import { urlForImage } from "@/lib/sanity/image";
 import { parseISO, format } from "date-fns";
@@ -11,19 +12,24 @@ import AuthorCard from "@/components/blog/authorCard";
 
 export default function Post(props) {
   const { loading, post } = props;
+  const router = useRouter(); // Usa useRouter para manejar la redirección
 
-  const slug = post?.slug;
-
-  if (!loading && !slug) {
-    notFound();
+  // Si no hay 'loading' y no se encuentra el 'slug', redirige a la página 404
+  if (!loading && !post?.slug) {
+    if (typeof window !== 'undefined') {
+      router.push('/404');
+    } else {
+      // Si estás en el servidor, puedes devolver 'notFound: true' en 'getStaticProps' o 'getServerSideProps'
+      throw new Error('Page not found');
+    }
   }
 
   const imageProps = post?.mainImage
-    ? urlForImage(post?.mainImage)
+    ? urlForImage(post?.mainImage).url() // Asegúrate de que 'urlForImage' devuelve una URL válida
     : null;
 
   const AuthorimageProps = post?.author?.image
-    ? urlForImage(post.author.image)
+    ? urlForImage(post.author.image).url() // Asegúrate de que 'urlForImage' devuelve una URL válida
     : null;
 
   return (

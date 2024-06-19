@@ -10,9 +10,8 @@ async function sharedMetaData(params) {
     // metadataBase: new URL(settings.url),
     title: {
       default:
-        settings?.title ||
         "Revelaciones de Caro",
-      template: "%s | Stablo"
+     
     },
     description:
       settings?.description ||
@@ -31,10 +30,7 @@ async function sharedMetaData(params) {
         }
       ]
     },
-  /*   twitter: {
-      title: settings?.title || "Stablo Template",
-      card: "summary_large_image"
-    }, */
+
     robots: {
       index: true,
       follow: true

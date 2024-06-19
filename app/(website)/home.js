@@ -58,7 +58,7 @@ export default function Post() {
                       fill
                       sizes="(max-width: 768px) 30vw, 33vw"
                     />
-                    )
+                    
                   </Link>
                 </div>
 

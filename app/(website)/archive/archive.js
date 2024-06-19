@@ -26,6 +26,7 @@ export default  function Post() {
         const fetchedArticles = await getAllArticles();
         setArticles(fetchedArticles);
         setArticles(fetchedArticles);
+     
       } catch (error) {
         setArticles([])
       }
@@ -34,9 +35,8 @@ export default  function Post() {
   }, [pageIndex]); 
  const handlePageChange = (newPage) => {
    router.push(`/?page=${newPage}`);
-   alert('hola')
-  console.log(`Cambiando a la página ${newPage}`);
- 
+  
+  
 };
 
   return (
@@ -45,7 +45,7 @@ export default  function Post() {
       <div className='mt-10 grid gap-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-3'>
         {currentArticles.map((article) => (
           <div
-          key={article.titulo}
+          key={article.id}
             className={cx(
               "group cursor-pointer",
             )}>
@@ -58,8 +58,7 @@ export default  function Post() {
                   "relative block aspect-square",
 
                 )}
-                href={`/`}>
-
+                href={`/post/${article.id}`}>
                 <Image
                   src={article.img}
                   alt={article.titulo || "Thumbnail"}
@@ -67,7 +66,7 @@ export default  function Post() {
                   fill
                   sizes="(max-width: 768px) 30vw, 33vw"
                 />
-                )
+                
               </Link>
             </div>
 
@@ -76,7 +75,7 @@ export default  function Post() {
                className={cx(
                 "mt-2    dark:text-white"
               )}>
-              <Link href={`/`}>
+              <Link href={`/post/${article.id}`}>
                 <span
                   className="bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom
         bg-no-repeat
