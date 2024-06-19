@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 import { getArticleById } from '@/lib/firebase/articles.services';
 import { useParams } from 'next/navigation'
 import Container from "@/components/container";
+
+
 export default function ArticlePage() {
   const [article, setArticle] = useState({});
   /*  const router = useRouter(); */
@@ -22,6 +24,11 @@ export default function ArticlePage() {
 
     }
   }, [setArticle]);
+
+ 
+
+
+
 
   return (
 

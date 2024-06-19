@@ -15,11 +15,11 @@ export default function Layout(props) {
   const ogimage = urlForImage(props?.openGraphImage) ?? "";
   return (
     <>
-      <Head>
+    {/*   <Head>
         <link rel="preconnect" href="https://cdn.sanity.io/" />
         <link rel="dns-prefetch" href="https://cdn.sanity.io//" />
-      </Head>
-      <NextSeo
+      </Head> */}
+    {/*   <NextSeo
         title={props.title}
         description={props.description}
         canonical={props.url}
@@ -42,7 +42,7 @@ export default function Layout(props) {
           site: "@surjithctly",
           cardType: "summary_large_image"
         }}
-      />
+      /> */}
 
       <div
         className={cx(
