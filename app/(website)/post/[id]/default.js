@@ -1,80 +1,50 @@
+
+import Head from 'next/head';
+
+import Container from '@/components/container';
 import Image from "next/image";
 import Link from "next/link";
-import Container from "@/components/container";
-// Importa 'useRouter' desde 'next/router' para manejar la redirección en caso de no encontrar el post
-import { useRouter } from "next/router";
-import { PortableText } from "@/lib/sanity/plugins/portabletext";
-import { urlForImage } from "@/lib/sanity/image";
-import { parseISO, format } from "date-fns";
 
-import CategoryLabel from "@/components/blog/category";
-import AuthorCard from "@/components/blog/authorCard";
-
-export default function Post(props) {
-  const { loading, post } = props;
-  const router = useRouter(); // Usa useRouter para manejar la redirección
-
-  // Si no hay 'loading' y no se encuentra el 'slug', redirige a la página 404
-  if (!loading && !post?.slug) {
-    if (typeof window !== 'undefined') {
-      router.push('/404');
-    } else {
-      // Si estás en el servidor, puedes devolver 'notFound: true' en 'getStaticProps' o 'getServerSideProps'
-      throw new Error('Page not found');
-    }
-  }
-
-  const imageProps = post?.mainImage
-    ? urlForImage(post?.mainImage).url() // Asegúrate de que 'urlForImage' devuelve una URL válida
-    : null;
-
-  const AuthorimageProps = post?.author?.image
-    ? urlForImage(post.author.image).url() // Asegúrate de que 'urlForImage' devuelve una URL válida
-    : null;
+export default function ArticlePage({ articleData }) {
 
   return (
     <>
+      <head>
+      <title>{articleData.titulo}</title>
+        {/* Metadatos para Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={articleData.titulo} />
+        <meta name="twitter:description" content={articleData.titulo} />
+        {/* ... Agrega más metadatos de Twitter según tus necesidades ... */}
+
+        {/* Metadatos para Facebook */}
+        <meta property="og:title" content={articleData.titulo} />
+        <meta property="og:description" content={articleData.titulos} />
+        {/* ... Agrega más metadatos de Facebook según tus necesidades ... */}
+    
+      </head>
       <Container className="!pt-0">
         <div className="mx-auto max-w-screen-md ">
           <div className="flex justify-center">
-            <CategoryLabel categories={post.categories} />
+
           </div>
 
           <h1 className="text-brand-primary mb-3 mt-2 text-center text-3xl font-semibold tracking-tight dark:text-white lg:text-4xl lg:leading-snug">
-            {post.title}
+            {articleData.titulo}
           </h1>
 
           <div className="mt-3 flex justify-center space-x-3 text-gray-500 ">
             <div className="flex items-center gap-3">
-              <div className="relative h-10 w-10 flex-shrink-0">
-                {AuthorimageProps && (
-                  <Link href={`/author/${post.author.slug.current}`}>
-                    <Image
-                      src={AuthorimageProps.src}
-                      alt={post?.author?.name}
-                      className="rounded-full object-cover"
-                      fill
-                      sizes="40px"
-                    />
-                  </Link>
-                )}
-              </div>
+
               <div>
-                <p className="text-gray-800 dark:text-gray-400">
-                  <Link href={`/author/${post.author.slug.current}`}>
-                    {post.author.name}
-                  </Link>
-                </p>
+
                 <div className="flex items-center space-x-2 text-sm">
                   <time
                     className="text-gray-500 dark:text-gray-400"
-                    dateTime={post?.publishedAt || post._createdAt}>
-                    {format(
-                      parseISO(post?.publishedAt || post._createdAt),
-                      "MMMM dd, yyyy"
-                    )}
+                    dateTime={articleData.fecha}>
+
                   </time>
-                  <span>· {post.estReadingTime || "5"} min read</span>
+
                 </div>
               </div>
             </div>
@@ -83,14 +53,19 @@ export default function Post(props) {
       </Container>
 
       <div className="relative z-0 mx-auto aspect-video max-w-screen-lg overflow-hidden lg:rounded-lg">
-        {imageProps && (
+        {articleData.urlVideo ? (
+          <video controls style={{ with: '100%', height: 'auto' }} >
+            <source src={articleData.urlVideo} />
+            Tu navegador no soporta el elemento de video.
+          </video>
+        ) : (
           <Image
-            src={imageProps.src}
-            alt={post.mainImage?.alt || "Thumbnail"}
+            src={articleData.img}
+            alt={articleData.title}
             loading="eager"
             fill
-            sizes="100vw"
-            className="object-cover"
+            sizes="800vw"
+
           />
         )}
       </div>
@@ -98,33 +73,26 @@ export default function Post(props) {
       <Container>
         <article className="mx-auto max-w-screen-md ">
           <div className="prose mx-auto my-3 dark:prose-invert prose-a:text-blue-600">
-            {post.body && <PortableText value={post.body} />}
+            {articleData.contenido}
+            <div className='my-3'>
+              <div className='d-block'>fecha: {new Date(articleData.fecha).toLocaleDateString('es-CR', { day: '2-digit', month: '2-digit', year: '2-digit' })}</div>
+              <div className='d-block'>Autor: {articleData.autor}</div>
+            </div>
           </div>
           <div className="mb-7 mt-7 flex justify-center">
+
             <Link
               href="/"
               className="bg-brand-secondary/20 rounded-full px-5 py-2 text-sm text-blue-600 dark:text-blue-500 ">
-              ← View all posts
+              ← Ver todo los Post
             </Link>
           </div>
-          {post.author && <AuthorCard author={post.author} />}
+
+
         </article>
       </Container>
-    </>
-  );
-}
 
-const MainImage = ({ image }) => {
-  return (
-    <div className="mb-12 mt-12 ">
-      <Image {...urlForImage(image)} alt={image.alt || "Thumbnail"} />
-      <figcaption className="text-center ">
-        {image.caption && (
-          <span className="text-sm italic text-gray-600 dark:text-gray-400">
-            {image.caption}
-          </span>
-        )}
-      </figcaption>
-    </div>
-  );
-};
+    </>
+  )
+
+}
