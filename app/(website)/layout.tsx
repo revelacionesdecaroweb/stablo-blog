@@ -2,9 +2,9 @@ import { getSettings } from "@/lib/sanity/client";
 import Footer from "@/components/footer";
 import { urlForImage } from "@/lib/sanity/image";
 import Navbar from "@/components/navbar";
-
-
-/*  async function sharedMetaData(params) {
+import Head from 'next/head';
+/* 
+  async function sharedMetaData(params) {
   const settings = await getSettings();
 
   return {
@@ -42,14 +42,14 @@ import Navbar from "@/components/navbar";
       follow: true
     }
   };
-}
+} */
 
-export async function generateMetadata({ params }) {
+/* export async function generateMetadata({ params }) {
   return await sharedMetaData(params);
-}  */
- 
-export default  async function Layout({ children, params }) {
-/*   const settings = await getSettings(); */
+}  
+  */
+export default   function Layout({ children, params }) {
+
   return (
     <>
       <Navbar  />

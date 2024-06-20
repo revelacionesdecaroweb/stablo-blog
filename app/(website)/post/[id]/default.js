@@ -1,53 +1,30 @@
 
-/* import Head from 'next/head'; */
+import Head from 'next/head';
 
 import Container from '@/components/container';
 import Image from "next/image";
 import Link from "next/link";
 
- async function sharedMetaData({ articleData}) {
-  
 
-  return {
-    // enable this for resolving opengraph image
-    // metadataBase: new URL(settings.url),
-    title: {
-      default:
-        articleData.titulo 
-    },
-    description:
-      settings?.description ,
-  
-    authors:articleData.auto,
-    openGraph: {
-      images: [
-        {
-          url:
-          articleData.img,
-          width: 800,
-          height: 600
-        }
-      ]
-    },
-    twitter: {
-      title:  articleData.titulo
-    },
-    robots: {
-      index: true,
-      follow: true
-    }
-  };
-}
-
-export async function generateMetadata({ params }) {
-  return await sharedMetaData(params);
-}  
 
 export default function ArticlePage({ articleData }) {
 
   return (
     <>
-      
+      <head>
+      <title>{articleData.titulo}</title>
+        {/* Metadatos para Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={articleData.titulo} />
+        <meta name="twitter:description" content={articleData.titulo} />
+        {/* ... Agrega más metadatos de Twitter según tus necesidades ... */}
+
+        {/* Metadatos para Facebook */}
+        <meta property="og:title" content={articleData.titulo} />
+        <meta property="og:description" content={articleData.titulos} />
+        {/* ... Agrega más metadatos de Facebook según tus necesidades ... */}
+    
+      </head>
       <Container className="!pt-0">
         <div className="mx-auto max-w-screen-md ">
           <div className="flex justify-center">

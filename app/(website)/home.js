@@ -25,7 +25,23 @@ export default function Post() {
   const fontSize = "large";
   const fontWeight = "normal"
   return (
+
+
     <>
+      <head>
+      <title>Revelaciones De Caro</title>
+        {/* Metadatos para Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Revelaciones De Caro"/>
+        <meta name="twitter:description" content="Blog de Filosofía y Astrología" />
+        {/* ... Agrega más metadatos de Twitter según tus necesidades ... */}
+
+        {/* Metadatos para Facebook */}
+        <meta property="og:title" content="Revelaciones De Caro" />
+        <meta property="og:description" content="Blog de Filosofía y Astrología" />
+        {/* ... Agrega más metadatos de Facebook según tus necesidades ... */}
+    
+      </head>
       <Container>
 
         <>

@@ -43,9 +43,9 @@ export default function Layout() {
   
   return (
   
-    
+     
      <ArticlePage articleData={article}></ArticlePage> 
- 
+  
   );
 }
 
