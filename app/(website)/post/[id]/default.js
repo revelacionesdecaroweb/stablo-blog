@@ -1,5 +1,5 @@
 
-import Head from 'next/head';
+/* import Head from 'next/head'; */
 
 import Container from '@/components/container';
 import Image from "next/image";
@@ -17,7 +17,7 @@ import Link from "next/link";
     },
     description:
       settings?.description ,
-  /*   keywords: ["Next.js", "Sanity", "Tailwind CSS"], */
+  
     authors:articleData.auto,
     openGraph: {
       images: [
@@ -47,20 +47,7 @@ export default function ArticlePage({ articleData }) {
 
   return (
     <>
-      <head>
-      <title>{articleData.titulo}</title>
-        {/* Metadatos para Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={articleData.titulo} />
-        <meta name="twitter:description" content={articleData.titulo} />
-        {/* ... Agrega más metadatos de Twitter según tus necesidades ... */}
-
-        {/* Metadatos para Facebook */}
-        <meta property="og:title" content={articleData.titulo} />
-        <meta property="og:description" content={articleData.titulos} />
-        {/* ... Agrega más metadatos de Facebook según tus necesidades ... */}
-    
-      </head>
+      
       <Container className="!pt-0">
         <div className="mx-auto max-w-screen-md ">
           <div className="flex justify-center">
