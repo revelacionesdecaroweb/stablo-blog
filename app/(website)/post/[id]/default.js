@@ -22,6 +22,9 @@ export default function ArticlePage({ articleData }) {
         {/* Metadatos para Facebook */}
         <meta name="title" content={articleData.titulo} />
         <meta  name="description"  content={articleData.titulos} />
+         <meta name="image" content={articleData.img}/>
+        <meta name="image:alt" content={articleData.img}/>
+        <meta property="og:image" content={articleData.img}/>
         {/* ... Agrega más metadatos de Facebook según tus necesidades ... */}
     
       </head>
