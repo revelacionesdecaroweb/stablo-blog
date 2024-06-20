@@ -20,8 +20,8 @@ export default function ArticlePage({ articleData }) {
         {/* ... Agrega más metadatos de Twitter según tus necesidades ... */}
 
         {/* Metadatos para Facebook */}
-        <meta property="og:title" content={articleData.titulo} />
-        <meta property="og:description" content={articleData.titulos} />
+        <meta name="title" content={articleData.titulo} />
+        <meta  name="description"  content={articleData.titulos} />
         {/* ... Agrega más metadatos de Facebook según tus necesidades ... */}
     
       </head>
