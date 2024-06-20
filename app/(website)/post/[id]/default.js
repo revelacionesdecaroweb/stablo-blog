@@ -5,6 +5,44 @@ import Container from '@/components/container';
 import Image from "next/image";
 import Link from "next/link";
 
+ async function sharedMetaData({ articleData}) {
+  
+
+  return {
+    // enable this for resolving opengraph image
+    // metadataBase: new URL(settings.url),
+    title: {
+      default:
+        articleData.titulo 
+    },
+    description:
+      settings?.description ,
+  /*   keywords: ["Next.js", "Sanity", "Tailwind CSS"], */
+    authors:articleData.auto,
+    openGraph: {
+      images: [
+        {
+          url:
+          articleData.img,
+          width: 800,
+          height: 600
+        }
+      ]
+    },
+    twitter: {
+      title:  articleData.titulo
+    },
+    robots: {
+      index: true,
+      follow: true
+    }
+  };
+}
+
+export async function generateMetadata({ params }) {
+  return await sharedMetaData(params);
+}  
+
 export default function ArticlePage({ articleData }) {
 
   return (
