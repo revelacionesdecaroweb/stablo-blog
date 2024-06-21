@@ -66,7 +66,7 @@ export default function ArticlePage({ articleData }) {
         ) : (
           <Image
             src={articleData.img}
-            alt={articleData.title}
+            alt={articleData.titulo}
             loading="eager"
             fill
             sizes="800vw"

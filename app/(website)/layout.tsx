@@ -2,8 +2,10 @@ import { getSettings } from "@/lib/sanity/client";
 import Footer from "@/components/footer";
 import { urlForImage } from "@/lib/sanity/image";
 import Navbar from "@/components/navbar";
-import Head from 'next/head';
-/* 
+import MyDocument from "./_document";
+
+
+
   async function sharedMetaData(params) {
   const settings = await getSettings();
 
@@ -27,7 +29,7 @@ import Head from 'next/head';
         {
           url:
             urlForImage(settings?.openGraphImage)?.src ||
-            "/img/opengraph.jpg",
+            "https://firebasestorage.googleapis.com/v0/b/blog-ca662.appspot.com/o/perfil.jpg?alt=media&token=42a2a5d7-f5b6-4b9b-b511-8b04b699354d",
           width: 800,
           height: 600
         }
@@ -42,16 +44,17 @@ import Head from 'next/head';
       follow: true
     }
   };
-} */
+} 
 
-/* export async function generateMetadata({ params }) {
+ export async function generateMetadata({ params }) {
   return await sharedMetaData(params);
 }  
-  */
+  
 export default   function Layout({ children, params }) {
-
+   
   return (
     <>
+  
       <Navbar  />
 
       <div>{children}</div>
