@@ -5,10 +5,53 @@ import Container from '@/components/container';
 import Image from "next/image";
 import Link from "next/link";
 
+async function sharedMetaData(articleData) {
+  
+
+return {
+  // enable this for resolving opengraph image
+  // metadataBase: new URL(settings.url),
+  title: {
+    default:
+      articleData.titulo ||
+      "Revelaciones de Caro",
+    template: "%s | Stablo"
+  },
+  description:
+  articleData.tituloon ||
+    "Blog de Filosofía y Astrología",
+  keywords: ["Next.js", "Sanity", "Tailwind CSS"],
+  authors: [{ name: "Surjith" }],
+ 
+  openGraph: {
+    images: [
+      {
+        url:
+        articleData.img ||
+          "https://firebasestorage.googleapis.com/v0/b/blog-ca662.appspot.com/o/perfil.jpg?alt=media&token=42a2a5d7-f5b6-4b9b-b511-8b04b699354d",
+        width: 800,
+        height: 600
+      }
+    ]
+  },
+  twitter: {
+    title: articleData.titulo|| "Revelaciones de Caro",
+    card: "summary_large_image"
+  },
+  robots: {
+    index: true,
+    follow: true
+  }
+};
+} 
+
+export async function generateMetadata({ articleData }) {
+  return await sharedMetaData(articleData);
+}  
 
 
 export default function ArticlePage({ articleData }) {
-
+  
   return (
     <>
       <head>

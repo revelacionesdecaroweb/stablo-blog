@@ -2,30 +2,25 @@ import { getSettings } from "@/lib/sanity/client";
 import Footer from "@/components/footer";
 import { urlForImage } from "@/lib/sanity/image";
 import Navbar from "@/components/navbar";
-import Head from "next/head";
 
-import {Metadata}  from 'next'
+
  
-export const metadata: Metadata = {
-  title: 'Blog de Caro',
-  description: '...',
-}
 
 
-/*   async function sharedMetaData(articleData) {
-  
+   async function sharedMetaData(paramas) {
+    const settings = await getSettings();
 
   return {
     // enable this for resolving opengraph image
     // metadataBase: new URL(settings.url),
     title: {
       default:
-        articleData.titulo ||
+     
         "Revelaciones de Caro",
       template: "%s | Stablo"
     },
     description:
-    articleData.tituloon ||
+   
       "Blog de Filosofía y Astrología",
     keywords: ["Next.js", "Sanity", "Tailwind CSS"],
     authors: [{ name: "Surjith" }],
@@ -34,7 +29,6 @@ export const metadata: Metadata = {
       images: [
         {
           url:
-          articleData.img ||
             "https://firebasestorage.googleapis.com/v0/b/blog-ca662.appspot.com/o/perfil.jpg?alt=media&token=42a2a5d7-f5b6-4b9b-b511-8b04b699354d",
           width: 800,
           height: 600
@@ -42,7 +36,7 @@ export const metadata: Metadata = {
       ]
     },
     twitter: {
-      title: articleData.titulo|| "Revelaciones de Caro",
+      title:  "Revelaciones de Caro",
       card: "summary_large_image"
     },
     robots: {
@@ -52,9 +46,11 @@ export const metadata: Metadata = {
   };
 } 
 
- export async function generateMetadata({ articleData }) {
-  return await sharedMetaData(articleData);
-}   */ 
+ export async function generateMetadata({ params }) {
+  return await sharedMetaData(params);
+}  
+
+
 
 
   
