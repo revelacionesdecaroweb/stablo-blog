@@ -10,7 +10,6 @@ import ArticlePage from "./default";
 import { LoaderCircle } from 'lucide-react';
 
 
-
 export default function Layout() {
   let [article, setArticle] = useState({});
  
@@ -25,8 +24,6 @@ export default function Layout() {
         // Verifica los datos del artículo
         setArticle(articleData);
         setisLoading(false);
-       
-      
       });
 
 
@@ -48,12 +45,9 @@ export default function Layout() {
         {/* Aumenta el tamaño del spinner (ajusta el valor de w-12 y h-12 según tus necesidades) */}
       </div>
       ) : (
-        <>
-
+        // Cuando los datos están listos, muestra el componente ArticlePage
         <ArticlePage articleData={article} />
-      
-        </>
-      
+    
       )}
     </>
      
