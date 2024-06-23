@@ -49,6 +49,12 @@ export async function generateMetadata({ articleData }) {
   return await sharedMetaData(articleData);
 } */
 
+  import  {Metadata}  from 'next'
+ 
+export const  metadata = {
+  title: 'Blog de caro',
+ 
+}
 
 
 
