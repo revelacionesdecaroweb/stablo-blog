@@ -11,7 +11,7 @@ import { LoaderCircle } from 'lucide-react';
 
 
 
-export default function Page() {
+export default function Layout() {
   let [article, setArticle] = useState({});
  
   let data = useParams()
