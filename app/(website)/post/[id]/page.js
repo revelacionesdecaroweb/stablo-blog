@@ -10,7 +10,8 @@ import ArticlePage from "./default";
 import { LoaderCircle } from 'lucide-react';
 
 
-export default function Layout() {
+
+export default function Page() {
   let [article, setArticle] = useState({});
  
   let data = useParams()
@@ -19,11 +20,12 @@ export default function Layout() {
 
   useEffect(() => {
     if (data) {
-   
+     
       getArticleById(data.id).then(articleData => {
         // Verifica los datos del artículo
         setArticle(articleData);
         setisLoading(false);
+        return setArticle
       });
 
 
@@ -33,7 +35,7 @@ export default function Layout() {
 
 
   
-
+ 
 
   return (
    <>
@@ -46,8 +48,9 @@ export default function Layout() {
       </div>
       ) : (
         // Cuando los datos están listos, muestra el componente ArticlePage
-        <ArticlePage articleData={article} />
-    
+      
+          <ArticlePage articleData={article} />
+         
       )}
     </>
      
@@ -55,5 +58,5 @@ export default function Layout() {
   );
   
 
-}
+};
 
