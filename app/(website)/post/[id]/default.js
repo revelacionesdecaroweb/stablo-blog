@@ -1,60 +1,42 @@
 
-import Head from 'next/head';
-
 import Container from '@/components/container';
 import Image from "next/image";
 import Link from "next/link";
 
-async function sharedMetaData(articleData) {
-  
-
-return {
-  // enable this for resolving opengraph image
-  // metadataBase: new URL(settings.url),
-  title: {
-    default:
-      articleData.titulo ||
-      "Revelaciones de Caro",
-    template: "%s | Stablo"
-  },
-  description:
-  articleData.tituloon ||
-    "Blog de Filosofía y Astrología",
-  keywords: ["Next.js", "Sanity", "Tailwind CSS"],
-  authors: [{ name: "Surjith" }],
  
-  openGraph: {
-    images: [
-      {
-        url:
-        articleData.img ||
-          "https://firebasestorage.googleapis.com/v0/b/blog-ca662.appspot.com/o/perfil.jpg?alt=media&token=42a2a5d7-f5b6-4b9b-b511-8b04b699354d",
-        width: 800,
-        height: 600
-      }
-    ]
-  },
-  twitter: {
-    title: articleData.titulo|| "Revelaciones de Caro",
-    card: "summary_large_image"
-  },
-  robots: {
-    index: true,
-    follow: true
-  }
-};
-} 
+import Head from 'next/head';
 
-export async function generateMetadata({ articleData }) {
-  return await sharedMetaData(articleData);
-}  
+import  {Metadata}  from 'next'
+ 
+export const  metadata = {
+  title: '',
+  description: ''
+}
+ 
+
 
 
 export default function ArticlePage({ articleData }) {
   
+  metadata.title = articleData.titulo;
+  metadata.description = articleData.titulo;
+ 
   return (
     <>
-   
+       <head>
+        <title>{articleData.title}</title>
+        <meta name="description" content={articleData.titulo} />
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={articleData.titulo} />
+        <meta property="og:description" content={articleData.titulo} />
+        <meta property="og:image" content={articleData.img} />
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:title" content={articleData.titulo} />
+        <meta property="twitter:description" content={articleData.titulo} />
+        <meta property="twitter:image" content={articleData.img} />
+      </head>
       <Container className="!pt-0">
         <div className="mx-auto max-w-screen-md ">
           <div className="flex justify-center">
@@ -123,7 +105,7 @@ export default function ArticlePage({ articleData }) {
 
         </article>
       </Container>
-
+     
     </>
   )
 

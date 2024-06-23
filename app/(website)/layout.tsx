@@ -1,32 +1,33 @@
+
+
 import { getSettings } from "@/lib/sanity/client";
 import Footer from "@/components/footer";
 import { urlForImage } from "@/lib/sanity/image";
 import Navbar from "@/components/navbar";
 
 
-
-   async function sharedMetaData(paramas) {
-    const settings = await getSettings();
+/* async function sharedMetaData(articleData) {
+  const settings = await getSettings(articleData);
 
   return {
-    // enable this for resolving opengraph image
-    // metadataBase: new URL(settings.url),
+ 
     title: {
       default:
-     
+        settings?.title ||
         "Revelaciones de Caro",
-      template: "%s | Stablo"
+    
     },
     description:
-   
+      settings?.description ||
       "Blog de Filosofía y Astrología",
-    keywords: ["Next.js", "Sanity", "Tailwind CSS"],
-    authors: [{ name: "Surjith" }],
-   
+    keywords: ["Blog", "Filosofía", "Astrología", "Enseñamza de vida"],
+    authors: [{ name: "Carolina" }],
+    canonical: settings?.url,
     openGraph: {
       images: [
         {
           url:
+            urlForImage(settings?.openGraphImage)?.src ||
             "https://firebasestorage.googleapis.com/v0/b/blog-ca662.appspot.com/o/perfil.jpg?alt=media&token=42a2a5d7-f5b6-4b9b-b511-8b04b699354d",
           width: 800,
           height: 600
@@ -34,7 +35,7 @@ import Navbar from "@/components/navbar";
       ]
     },
     twitter: {
-      title:  "Revelaciones de Caro",
+      title: settings?.title || "Revelaciones de Caro",
       card: "summary_large_image"
     },
     robots: {
@@ -42,28 +43,31 @@ import Navbar from "@/components/navbar";
       follow: true
     }
   };
-} 
+}
 
- export async function generateMetadata({ params }) {
-  return await sharedMetaData(params);
-}  
+export async function generateMetadata({ articleData }) {
+  return await sharedMetaData(articleData);
+} */
 
-
-
-
-  
-export default   function Layout({ children}) {
+  import  {Metadata}  from 'next'
  
+export const  metadata = {
+  title: 'Blog de Caro',
+  description: ''
+}
+ 
+
+
+
+export default async function Layout({ children, articleData }) {
+  const settings = await getSettings(articleData);
   return (
     <>
-
-
-  
-      <Navbar  />
+      <Navbar {...settings} />
 
       <div>{children}</div>
 
-      <Footer  />
+      <Footer {...settings} />
     </>
   );
 }

@@ -52,7 +52,7 @@ export async function getAllPosts() {
   return [];
 }
 
-export async function getSettings() {
+export async function getSettings(articleData) {
   if (client) {
     return (await client.fetch(configQuery)) || [];
   }
