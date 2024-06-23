@@ -5,6 +5,7 @@ import Footer from "@/components/footer";
 import { urlForImage } from "@/lib/sanity/image";
 import Navbar from "@/components/navbar";
 
+import  {Metadata}  from 'next'
 
 /* async function sharedMetaData(articleData) {
   const settings = await getSettings(articleData);
@@ -49,11 +50,12 @@ export async function generateMetadata({ articleData }) {
   return await sharedMetaData(articleData);
 } */
 
-  import  {Metadata}  from 'next'
+
  
-export const  metadata = {
+export const  metadata: Metadata=  {
   title: 'Blog de caro',
- 
+  description: 'Blog de Astrología y Filosofía',
+  metadataBase: new URL('https://revelacionesdecaro.com/')
 }
 
 
