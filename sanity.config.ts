@@ -21,8 +21,8 @@ console.log(projectId);
 
 export default defineConfig({
   name: "default",
-  title: "Stablo Template",
-  basePath: "/studio",
+  title: "Revelaciones de Caro",
+  basePath: "https://revelacionesdecaro.com/",
   projectId: projectId,
   dataset: dataset,
 
