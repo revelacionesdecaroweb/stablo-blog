@@ -36,7 +36,7 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.js",
-    ".next/types/**/*.ts", "app/(website)/_document.jsx"],
+    ".next/types/**/*.ts", "app/(website)/_document.jsx", "app/(website)/homeMeta.jsx"],
   "exclude": [
     "node_modules"
   ]

@@ -68,6 +68,15 @@ export default  function Post() {
                 />
                 
               </Link>
+              <Link
+                className={cx(
+                  "relative block aspect-square",
+
+                )}
+                href={`/metatag/${article.id}`}> tag
+                
+                
+              </Link>
             </div>
 
 
