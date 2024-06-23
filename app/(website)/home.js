@@ -59,7 +59,7 @@ export default function Post() {
           "relative block aspect-square",
 
         )}
-        href={`/`}>
+        href={`/post/${article.id}`}>
 
         <Image
           src={article.img}
@@ -86,7 +86,7 @@ export default function Post() {
           : "font-semibold leading-snug tracking-tight",
         "mt-2    dark:text-white"
       )}>
-      <Link href={`/`}>
+      <Link href={`/post/${article.id}`}>
         <span
           className="bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom
 bg-no-repeat
