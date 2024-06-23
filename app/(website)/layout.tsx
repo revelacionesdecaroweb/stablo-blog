@@ -49,25 +49,18 @@ export async function generateMetadata({ articleData }) {
   return await sharedMetaData(articleData);
 } */
 
-  import  {Metadata}  from 'next'
- 
-export const  metadata = {
-  title: 'Blog de Caro',
-  description: ''
-}
- 
 
 
 
-export default async function Layout({ children, articleData }) {
-  const settings = await getSettings(articleData);
+export default async function Layout({ children }) {
+ /*  const settings = await getSettings(articleData); */
   return (
     <>
-      <Navbar {...settings} />
+      <Navbar  />
 
       <div>{children}</div>
 
-      <Footer {...settings} />
+      <Footer  />
     </>
   );
 }
