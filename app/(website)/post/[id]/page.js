@@ -11,6 +11,7 @@ import { LoaderCircle } from 'lucide-react';
 
 
 
+
 export default function Page() {
   let [article, setArticle] = useState({});
  
@@ -48,9 +49,11 @@ export default function Page() {
       </div>
       ) : (
         // Cuando los datos están listos, muestra el componente ArticlePage
-      
+         <>
+  
           <ArticlePage articleData={article} />
          
+         </> 
       )}
     </>
      

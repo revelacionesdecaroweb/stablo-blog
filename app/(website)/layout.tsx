@@ -2,7 +2,8 @@ import { getSettings } from "@/lib/sanity/client";
 import Footer from "@/components/footer";
 import { urlForImage } from "@/lib/sanity/image";
 import Navbar from "@/components/navbar";
-import PageMeta from "./metatag/[id]/page";
+
+
 
 
 /* async function sharedMetaData(params) {
@@ -54,7 +55,7 @@ export default async function Layout({ children, params }) {
   return (
     <>
       
-      <PageMeta></PageMeta>
+    
       <Navbar {...settings} />
 
       <div>{children}</div>
