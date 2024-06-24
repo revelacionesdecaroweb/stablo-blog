@@ -14,12 +14,12 @@ export default  function Post() {
  
     <>
 
-<head>
+   <head>
       <meta name="title" conten= 'Revelaciones de Caro'/>
       <meta name="description" conten= 'Blog de Astrología y Filosofía'/>
     </head>
 
-     <ArchivePage></ArchivePage>
+     
         
    
 
