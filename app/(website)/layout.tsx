@@ -54,7 +54,7 @@ export default async function Layout({ children, params }) {
   return (
     <>
       
-    {/*   <PageMeta></PageMeta> */}
+      <PageMeta></PageMeta>
       <Navbar {...settings} />
 
       <div>{children}</div>
